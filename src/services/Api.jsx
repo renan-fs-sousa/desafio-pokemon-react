@@ -26,7 +26,6 @@ export const getPokemonBytypeMenu = async (typePokemon) => {
   try {
     const response = await fetch(baseURL + 'type/' + typePokemon)
     const data = await response.json()
-    //console.log(data)
     return data.pokemon.map((entry) => entry.pokemon.name)
   } catch (error) {
     console.error('Error fetching Pokémon types:', error)

@@ -13,7 +13,6 @@ export const BoxListCardsPokemon = ({ onCounterUpdate, searchData }) => {
     const fetchData = async () => {
       try {
         const namesPokemon = searchData
-        console.log('iniciou o fetch do getdata', searchData)
         const fetchedPokemon = []
         for (const namePokemon of namesPokemon) {
           const dataPokemon = await getDataPokemon(namePokemon)
@@ -26,7 +25,6 @@ export const BoxListCardsPokemon = ({ onCounterUpdate, searchData }) => {
     }
 
     if (searchData.length) {
-      console.log('fetch do searchData feito')
       fetchData()
     }
   }, [searchData]) // Adiciona searchData como dependência para o useEffect
