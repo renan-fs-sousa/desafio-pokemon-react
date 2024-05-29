@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const baseURL = 'https://pokeapi.co/api/v2/'
 
 export const getAllPokemonTypes = async () => {
@@ -6,7 +7,7 @@ export const getAllPokemonTypes = async () => {
     const data = await response.json()
     return data.results.map((item) => item.name)
   } catch (error) {
-    // console.error('Error fetching Pokémon types:', error)
+    console.error('Error fetching Pokémon types:', error)
     return []
   }
 }
@@ -17,7 +18,7 @@ export const getPokemonMenuAll = async () => {
     const data = await response.json()
     return data
   } catch (error) {
-    // console.error('Error fetching Pokémon types:', error)
+    console.error('Error fetching Pokémon types:', error)
     return []
   }
 }
@@ -28,7 +29,7 @@ export const getPokemonBytypeMenu = async (typePokemon) => {
     const data = await response.json()
     return data.pokemon.map((entry) => entry.pokemon.name)
   } catch (error) {
-    // console.error('Error fetching Pokémon types:', error)
+    console.error('Error fetching Pokémon types:', error)
     return []
   }
 }
@@ -53,7 +54,7 @@ export const getDataPokemon = async (pokemonName) => {
 
     return pokemon
   } catch (error) {
-    // console.error('Error fetching Pokémon types:', error);
+    console.error('Error fetching Pokémon types:', error)
     return []
   }
 }

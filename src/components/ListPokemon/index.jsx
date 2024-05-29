@@ -23,8 +23,8 @@ export const ListPokemon = ({ searchData }) => {
     fetchData()
   }, [])
 
-  const { count, results } = pokemonList
-  console.log(results.map((item) => item.name))
+  const { count } = pokemonList
+
   return (
     <SC.BoxListPokemon>
       <CounterListPokemon counterAll={count} />
