@@ -14,6 +14,7 @@ import { Main } from './components/Main'
 
 function App() {
   const [searchData, setSearchData] = useState([])
+  const foo = 'foo'
 
   return (
     <>
@@ -21,7 +22,7 @@ function App() {
       <OverlaySlideHero />
       <BoxBgSlideHero />
       <BoxBgSearchBar />
-      <div className="wrapper">
+      <div className="wrapper" onClick={() => foo}>
         <Header />
         <Hero />
         <SearchBar setSearchData={setSearchData} />
