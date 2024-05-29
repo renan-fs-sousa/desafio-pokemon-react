@@ -24,20 +24,17 @@ export const Menu = ({ setSearchData }) => {
       const pokemon = await getPokemonBytypeMenu(typeActiveMenu)
 
       setSearchData(pokemon)
-      console.log('finalizado fetch typeActiveMenu')
     }
 
     if (typeActiveMenu != 'All') {
-      console.log('iniciando fetch typeActiveMenu')
       fetchData()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeActiveMenu])
 
   const handleClickMenu = (event, name) => {
     event.preventDefault()
     setTypeActiveMenu(name)
-
-    // console.log(pokemonByType)
   }
 
   return (
