@@ -8,12 +8,18 @@ import { BoxBgSearchBar } from './components/BoxBgSearchBar'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { Footer } from './components/Footer'
-import { Spinner } from './components/Spinner'
+
 import { SearchBar } from './components/SearchBar'
 import { Main } from './components/Main'
 
 function App() {
-  const [searchData, setSearchData] = useState([])
+  const [searchData, setSearchData] = useState('')
+  const [typeActiveMenu, setTypeActiveMenu] = useState('')
+  const [pokemonList, setPokemonList] = useState({
+    count: 0,
+    next: '',
+    results: []
+  })
 
   return (
     <>
@@ -24,11 +30,21 @@ function App() {
       <div className="wrapper">
         <Header />
         <Hero />
-        <SearchBar setSearchData={setSearchData} />
-        <Main searchData={searchData} setSearchData={setSearchData} />
+        <SearchBar
+          setSearchData={setSearchData}
+          setPokemonList={setPokemonList}
+          setTypeActiveMenu={setTypeActiveMenu}
+        />
+        <Main
+          typeActiveMenu={typeActiveMenu}
+          setTypeActiveMenu={setTypeActiveMenu}
+          searchData={searchData}
+          setSearchData={setSearchData}
+          pokemonList={pokemonList}
+          setPokemonList={setPokemonList}
+        />
       </div>
       <Footer />
-      <Spinner />
     </>
   )
 }

@@ -10,4 +10,7 @@ export const BoxShowingResultListPokemon = styled.div`
     font-size: 1.4rem;
     line-height: 2.1rem;
   }
+  strong {
+    text-transform: capitalize;
+  }
 `
