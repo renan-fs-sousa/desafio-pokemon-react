@@ -1,10 +1,33 @@
-import * as SC from './styles'
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
 
-// eslint-disable-next-line react/prop-types
-export const ShowingResultPokemon = ({ counterShowing }) => {
+import * as SC from './styles'
+import { useState, useEffect } from 'react'
+
+export const ShowingResultPokemon = ({
+  counterShowing,
+  typeActiveMenu,
+  searchData
+}) => {
+  const [textFilter, setTextFilter] = useState('All')
+
+  useEffect(() => {
+    if (typeActiveMenu !== '') {
+      setTextFilter(typeActiveMenu)
+    }
+  }, [typeActiveMenu])
+
+  useEffect(() => {
+    if (searchData !== '') {
+      setTextFilter(searchData)
+    }
+  }, [searchData])
+
   return (
     <SC.BoxShowingResultListPokemon>
-      <span>Showing {counterShowing} results for:</span>
+      <span>
+        Showing {counterShowing} results for: <strong>'{textFilter}'</strong>
+      </span>
     </SC.BoxShowingResultListPokemon>
   )
 }

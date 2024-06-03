@@ -7,19 +7,30 @@ export const getAllPokemonTypes = async () => {
     const data = await response.json()
     return data.results.map((item) => item.name)
   } catch (error) {
-    console.error('Error fetching Pokémon types:', error)
-    return []
+    console.error('Error fetching Pokémon data:', error)
+    return {
+      error: true,
+      message: 'Error fetching Pokémon data',
+      details: error.message
+    }
   }
 }
 
-export const getPokemonMenuAll = async () => {
+export const getPokemonMenuAll = async (next) => {
+  const endPoint = next ? next : baseURL + 'pokemon?offset=0&limit=9'
+
   try {
-    const response = await fetch(baseURL + 'pokemon?offset=0&limit=9')
+    const response = await fetch(endPoint)
     const data = await response.json()
+
     return data
   } catch (error) {
     console.error('Error fetching Pokémon types:', error)
-    return []
+    return {
+      error: true,
+      message: 'Error fetching Pokémon data',
+      details: error.message
+    }
   }
 }
 
@@ -27,10 +38,15 @@ export const getPokemonBytypeMenu = async (typePokemon) => {
   try {
     const response = await fetch(baseURL + 'type/' + typePokemon)
     const data = await response.json()
+
     return data.pokemon.map((entry) => entry.pokemon.name)
   } catch (error) {
     console.error('Error fetching Pokémon types:', error)
-    return []
+    return {
+      error: true,
+      message: 'Error fetching Pokémon data',
+      details: error.message
+    }
   }
 }
 
@@ -54,7 +70,11 @@ export const getDataPokemon = async (pokemonName) => {
 
     return pokemon
   } catch (error) {
-    console.error('Error fetching Pokémon types:', error)
-    return []
+    console.error('Error fetching Pokémon data:', error)
+    return {
+      error: true,
+      message: 'Error fetching Pokémon data',
+      details: error.message
+    }
   }
 }

@@ -3,11 +3,23 @@ import { useState } from 'react'
 import * as SC from './styles'
 import searchIcon from '../../assets/search-icon.svg'
 
-export const SearchBar = ({ setSearchData }) => {
+export const SearchBar = ({
+  setSearchData,
+  setPokemonList,
+  setTypeActiveMenu
+}) => {
   const [inputValue, setInputValue] = useState('')
 
-  const handleSearch = () => {
-    setSearchData([inputValue])
+  const handleSearch = async () => {
+    await setSearchData('')
+
+    setSearchData(inputValue)
+    setTypeActiveMenu(null)
+
+    setPokemonList((prevState) => ({
+      ...prevState,
+      results: [{ name: inputValue.toLowerCase() }]
+    }))
   }
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
